@@ -1,0 +1,626 @@
+<MainWindow>:
+
+    MDNavigationLayout:
+
+        ScreenManager:
+
+            Screen:
+
+                MDBoxLayout:
+                    orientation: "vertical"
+
+                    MDTopAppBar:
+                        title: 'Мед. калькулятор'
+                        left_action_items: [['menu', lambda x: nav_drawer.set_state()]]
+
+                    MDBottomNavigation:
+
+                        MDBottomNavigationItem:
+                            name: 'Таблетки'
+                            text: 'Таблетки'
+                            icon: 'pill'
+
+                            MDGridLayout:
+                                padding: 50, 0, 20, 0
+                                spacing: 5
+                                cols: 1
+                                rows: 10
+
+                                MDLabel:
+                                    text: 'Количество активного вещества:'
+
+                                MDBoxLayout:
+                                    orientation: 'horizontal'
+                                    spacing: 10
+
+                                    MDTextFieldRect:
+                                        id: tab_amount_sub
+                                        size_hint: (0.8, 0.7)
+                                        pos_hint: {'center_y': .8}
+
+
+
+                                    MDLabel:
+                                        text: ' мг'
+                                        pos_hint: {'center_y': .8}
+
+
+                                    MDLabel:
+
+                                MDLabel:
+                                    text: 'Суточная доза активного вещества:'
+
+
+                                MDBoxLayout:
+                                    orientation: 'horizontal'
+                                    spacing: 10
+
+                                    MDTextFieldRect:
+                                        id: tab_dose_sub
+                                        size_hint: (0.8, 0.7)
+                                        pos_hint: {'center_y': .8}
+
+                                    MDLabel:
+                                        text: ' мг/кг'
+                                        pos_hint: {'center_y': .8}
+
+
+                                    MDLabel:
+
+                                MDLabel:
+                                    text: 'Вес пациента:'
+
+
+                                MDBoxLayout:
+                                    orientation: 'horizontal'
+                                    spacing: 10
+
+                                    MDTextFieldRect:
+                                        id: tab_weight
+                                        size_hint: (0.8, 0.7)
+                                        pos_hint: {'center_y': .8}
+
+                                    MDLabel:
+                                        text: ' кг'
+                                        pos_hint: {'center_y': .8}
+
+
+                                    MDLabel:
+
+                                MDLabel:
+                                    text: 'Количество приёмов в сутки:'
+
+
+                                MDBoxLayout:
+                                    orientation: 'horizontal'
+                                    spacing: 10
+
+                                    MDTextFieldRect:
+                                        id: tab_amount_taking
+                                        size_hint: (0.8, 0.7)
+                                        pos_hint: {'center_y': .8}
+
+                                    MDLabel:
+                                        text: 'раз(а)'
+                                        pos_hint: {'center_y': .8}
+
+
+                                    MDLabel:
+
+                                MDRaisedButton:
+                                    text: 'Рассчитать'
+                                    on_release: root.tab_calc()
+                                    pos_hint: {'center_y': .5}
+
+                                MDLabel:
+                                    id: tab_result
+                                    text: ''
+                                    halign: 'center'
+                                    pos_hint: {'center_x': .5}
+
+                        MDBottomNavigationItem:
+                            name: 'Суспензии'
+                            text: 'Суспензии'
+                            icon: 'water'
+
+                            MDGridLayout:
+                                padding: 50, 0, 20, 0
+                                spacing: 5
+                                cols: 1
+                                rows: 10
+
+
+                                MDLabel:
+                                    text: 'Количество активного вещества:'
+
+
+                                MDBoxLayout:
+                                    orientation: 'horizontal'
+                                    spacing: 10
+
+                                    MDTextFieldRect:
+                                        id: susp_amount_sub
+                                        size_hint: (0.8, 0.7)
+                                        pos_hint: {'center_y': .8}
+
+                                    MDLabel:
+                                        text: ' мг        /'
+                                        pos_hint: {'center_y': .8}
+
+                                    MDTextFieldRect:
+                                        id: susp_amount_ml
+                                        size_hint: (0.8, 0.7)
+                                        pos_hint: {'center_y': .8}
+
+                                    MDLabel:
+                                        text: ' мл'
+                                        pos_hint: {'center_y': .8}
+
+                                MDLabel:
+                                    text: 'Суточная доза активного вещества:'
+
+
+
+                                MDBoxLayout:
+                                    orientation: 'horizontal'
+                                    spacing: 10
+
+                                    MDTextFieldRect:
+                                        id: susp_dose_sub
+                                        size_hint: (0.8, 0.7)
+                                        pos_hint: {'center_y': .8}
+
+                                    MDLabel:
+                                        text: ' мг/кг'
+                                        pos_hint: {'center_y': .8}
+
+
+                                    MDLabel:
+
+                                MDLabel:
+                                    text: 'Вес пациента:'
+                                    theme_text_color: "Primary"
+
+
+
+                                MDBoxLayout:
+                                    orientation: 'horizontal'
+                                    spacing: 10
+
+                                    MDTextFieldRect:
+                                        id: susp_weight
+                                        size_hint: (0.8, 0.7)
+                                        pos_hint: {'center_y': .8}
+
+                                    MDLabel:
+                                        text: ' кг'
+                                        pos_hint: {'center_y': .8}
+
+
+                                    MDLabel:
+
+                                MDBoxLayout:
+                                    orientation: 'horizontal'
+                                    spacing: 15
+
+                                    MDLabel:
+                                        text: 'Количество приёмов в сутки:'
+
+                                    MDLabel:
+                                        text: 'Количество дней лечения:'
+
+
+                                MDBoxLayout:
+                                    orientation: 'horizontal'
+                                    spacing: 10
+
+                                    MDTextFieldRect:
+                                        id: susp_amount_taking
+                                        size_hint: (0.8, 0.7)
+                                        pos_hint: {'center_y': .8}
+
+                                    MDLabel:
+                                        text: 'раз(а)'
+                                        pos_hint: {'center_y': .8}
+
+                                    MDTextFieldRect:
+                                        id: susp_day_taking
+                                        size_hint: (0.8, 0.7)
+                                        pos_hint: {'center_y': .8}
+
+                                    MDLabel:
+                                        text: 'дней'
+                                        pos_hint: {'center_y': .8}
+
+                                MDRaisedButton:
+                                    text: 'Рассчитать'
+                                    pos_hint: {'center_y': .5}
+                                    on_release: root.susp_calc()
+
+                                MDLabel:
+                                    text: ''
+                                    id: susp_result
+                                    halign: 'center'
+                                    pos_hint: {'center_x': .5}
+
+                        MDBottomNavigationItem:
+                            name: 'Формулы'
+                            text: 'Формулы'
+                            icon: 'calculator-variant'
+
+                            ScrollView:
+
+                                MDList:
+
+                                    OneLineListItem:
+                                        text: 'Индекс массы тела (ИМТ)'
+                                        on_release: app.root.current = 'IMT'
+
+                                    OneLineListItem:
+                                        text: 'Площадь поверхности тела (ППТ)'
+                                        on_release: app.root.current = 'body_area'
+
+                                    OneLineListItem:
+                                        text: 'Шоковый индекс Альговера'
+                                        on_release: app.root.current = 'algover'
+
+                                    OneLineListItem:
+                                        text: 'Рассчёт койко-дней'
+                                        on_release: app.root.current = 'bed_day'
+
+
+                                    OneLineListItem:
+                                        text: 'Рассчёт дней ВН'
+                                        on_release: app.root.current = 'temp_disab'
+
+        MDNavigationDrawer:
+            id: nav_drawer
+
+
+            MDNavigationDrawerMenu:
+
+                MDNavigationDrawerHeader:
+
+                    title: "Помощник"
+                    text: "врача"
+                    spacing: "4dp"
+                    padding: "12dp", 0, 0, "56dp"
+                    source: 'icon.png'
+
+                MDBoxLayout:
+                    orientation: 'horizontal'
+                    MDIcon:
+                        icon: 'gmail'
+                        font_size: '25dp'
+
+                    MDLabel:
+                        text: 'sanromanov94@gmail.com'
+
+
+
+                MDNavigationDrawerLabel:
+
+                MDBoxLayout:
+                    padding: 0, 0, 20, 0
+                    orientation: 'horizontal'
+
+                    MDLabel:
+                        id: theme_style
+                        text: 'Светлая тема'
+
+                    MDSwitch:
+                        pos_hint: {'center_x': .5, 'center_y': .5}
+                        on_active: app.switch_active()
+                        on_active: root.switch_active()
+
+
+
+<IMTScreen>:
+
+    MDBoxLayout:
+        orientation: "vertical"
+        direction: 'left'
+
+
+        MDTopAppBar:
+            title: 'Индекс массы тела'
+            left_action_items: [['arrow-left', lambda _: setattr(root.manager, 'current', 'main')]]
+
+        MDBoxLayout:
+            orientation: 'vertical'
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                padding: 50, 20, 20, 0
+                spacing: 5
+
+                MDBoxLayout:
+                    orientation: 'horizontal'
+
+                    MDLabel:
+                        text: 'Масса тела:'
+
+                    MDLabel:
+                        text: 'Рост:'
+
+                MDBoxLayout:
+                    orientation: 'horizontal'
+                    spacing: 5
+
+                    MDTextFieldRect:
+                        id: imt_weight
+                        size_hint: (0.8, 0.7)
+                        pos_hint: {'center_y': .8}
+
+                    MDLabel:
+                        text: 'кг'
+                        pos_hint: {'center_y': .8}
+
+                    MDTextFieldRect:
+                        id: imt_growth
+                        size_hint: (0.8, 0.7)
+                        pos_hint: {'center_y': .8}
+
+                    MDLabel:
+                        text: 'м'
+                        pos_hint: {'center_y': .8}
+
+                MDLabel:
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                padding: 50, 20, 20, 0
+                spacing: 5
+
+                MDBoxLayout:
+                    orientation: 'horizontal'
+                    spacing: 5
+
+                    MDRaisedButton:
+                        text: 'Рассчитать'
+                        on_release: root.imt_calc()
+
+                    MDLabel:
+                        text: ''
+                        id: imt_result
+                        bold: True
+                        halign: "center"
+                        pos_hint: {'center_y': .7}
+
+
+
+                MDLabel:
+
+                MDLabel:
+
+                MDLabel:
+
+                MDLabel:
+
+                MDLabel:
+                    text: '16 и менее - Выраженный дефицит массы тела\n16—18,5 - Недостаточная (дефицит) масса тела\n18,5—25 - Норма\n25—30 - Избыточная масса тела (предожирение)\n30—35 - Ожирение 1 степени\n35—40 - Ожирение 2 степени\n40 и более - Ожирение 3 степени'
+
+        MDBottomNavigation:
+
+
+<BodyArea>:
+
+    MDBoxLayout:
+        orientation: "vertical"
+        direction: 'left'
+
+        MDTopAppBar:
+            title: 'Площадь поверхности тела'
+            left_action_items: [['arrow-left', lambda _: setattr(root.manager, 'current', 'main')]]
+
+        MDBoxLayout:
+            orientation: 'vertical'
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                padding: 50, 20, 20, 0
+                spacing: 5
+
+                MDBoxLayout:
+                    orientation: 'horizontal'
+
+                    MDLabel:
+                        text: 'Масса тела:'
+
+                    MDLabel:
+                        text: 'Рост:'
+
+                MDBoxLayout:
+                    orientation: 'horizontal'
+                    spacing: 5
+
+                    MDTextFieldRect:
+                        id: body_area_weight
+                        size_hint: (0.8, 0.7)
+                        pos_hint: {'center_y': .8}
+
+                    MDLabel:
+                        text: 'кг'
+                        pos_hint: {'center_y': .8}
+
+                    MDTextFieldRect:
+                        id: body_area_growth
+                        size_hint: (0.8, 0.7)
+                        pos_hint: {'center_y': .8}
+
+                    MDLabel:
+                        text: 'см'
+                        pos_hint: {'center_y': .8}
+
+                MDLabel:
+
+                MDBoxLayout:
+                    orientation: 'horizontal'
+
+                    MDRaisedButton:
+                        text: 'Рассчитать'
+                        on_release: root.body_area_calc()
+
+                    MDLabel:
+                        text: ''
+                        id: body_area_result
+                        bold: True
+                        halign: "center"
+                        pos_hint: {'center_y': .4}
+
+
+                MDLabel:
+                MDLabel:
+
+        MDBottomNavigation:
+
+
+<AlgoverScreen>:
+
+    MDBoxLayout:
+        orientation: "vertical"
+        direction: 'left'
+
+        MDTopAppBar:
+            title: 'Шоковый индекс Альговера'
+            left_action_items: [['arrow-left', lambda _: setattr(root.manager, 'current', 'main')]]
+
+        MDBoxLayout:
+            orientation: 'vertical'
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                padding: 50, 20, 20, 0
+                spacing: 5
+
+                MDBoxLayout:
+                    orientation: 'horizontal'
+
+                    MDLabel:
+                        text: 'ЧСС:'
+
+                    MDLabel:
+                        text: 'Систолическое давление:'
+
+                MDBoxLayout:
+                    orientation: 'horizontal'
+                    spacing: 5
+
+                    MDTextFieldRect:
+                        id: algover_hear_rate
+                        size_hint: (0.8, 0.7)
+                        pos_hint: {'center_y': .8}
+
+                    MDLabel:
+                        text: 'уд. в мин.'
+                        pos_hint: {'center_y': .8}
+
+                    MDTextFieldRect:
+                        id: algover_blood_pressure
+                        size_hint: (0.8, 0.7)
+                        pos_hint: {'center_y': .8}
+
+                    MDLabel:
+                        text: 'мм.рт.ст'
+                        pos_hint: {'center_y': .8}
+
+                MDLabel:
+
+            MDBoxLayout:
+                orientation: 'vertical'
+                padding: 50, 0, 20, 0
+
+                MDBoxLayout:
+                    orientation: 'horizontal'
+
+
+                    MDRaisedButton:
+                        text: 'Рассчитать'
+                        on_release: root.algover_calc()
+
+                    MDLabel:
+                        text: ''
+                        id: algover_result
+                        bold: True
+                        halign: "center"
+                        pos_hint: {'center_y': 0.7}
+
+
+
+
+                MDLabel:
+
+                MDLabel:
+
+                MDLabel:
+
+                MDLabel:
+                    text: '0.5 - Норма\n0.8-0.9 - Шок Iст.(кровопотеря 15-20% ОЦК)\n0.9-1.2 - Шок IIст.(кровопотеря 20-40% ОЦК)\n1.3 и выше - Шок IIIст.(кровопотеря более 40%)'
+
+        MDBottomNavigation:
+
+
+<BedDay>:
+
+    MDBoxLayout:
+        orientation: "vertical"
+        direction: 'left'
+
+        MDTopAppBar:
+            title: 'Койко-дни'
+            left_action_items: [['arrow-left', lambda _: setattr(root.manager, 'current', 'main')]]
+
+        MDBoxLayout:
+            orientation: 'vertical'
+
+            MDLabel:
+                text: 'Нажмите на календарь\nи выберите две даты'
+                halign: 'center'
+
+            MDFloatLayout:
+
+                MDIconButton:
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+
+                    icon: 'calendar'
+                    on_release: root.show_date_picker()
+
+            MDLabel:
+                id: bed_day_label
+                text: ''
+                halign: 'center'
+
+        MDBottomNavigation:
+
+
+<TempDisab>:
+
+    MDBoxLayout:
+        orientation: "vertical"
+        direction: 'left'
+
+        MDTopAppBar:
+            title: 'Временная нетрудоспособность'
+            left_action_items: [['arrow-left', lambda _: setattr(root.manager, 'current', 'main')]]
+
+        MDBoxLayout:
+            orientation: 'vertical'
+
+            MDLabel:
+                text: 'Нажмите на календарь\nи выберите две даты'
+                halign: 'center'
+
+            MDFloatLayout:
+
+                MDIconButton:
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+
+                    icon: 'calendar'
+                    on_release: root.show_date_picker()
+
+            MDLabel:
+                id: temp_disab_label
+                text: ''
+                halign: 'center'
+
+        MDBottomNavigation:
